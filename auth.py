@@ -2,10 +2,9 @@ import streamlit as st
 
 # --- USER DATABASE ---
 # Format: "email": ("password", "Role", "Department")
-# I have updated passwords to be stronger to stop the Chrome warning.
 users = {
-    "admin@okeb.com": ("OkebAdmin@2026", "ADMIN", "All"),     # Was admin123
-    "manager@okeb.com": ("Manager#Top24", "MANAGER", "All"),  # Was manager123
+    "admin@okeb.com": ("OkebAdmin@2026", "ADMIN", "All"),
+    "manager@okeb.com": ("Manager#Top24", "MANAGER", "All"),
     "fuel@okeb.com": ("FuelStation$1", "STAFF", "Fuel"),
     "bakery@okeb.com": ("FreshBread!99", "STAFF", "Bakery"),
     "pos@okeb.com": ("MoneyPoint*7", "STAFF", "POS"),
@@ -48,7 +47,7 @@ def login():
             background-color: #1e293b !important;
             box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
         }
-        h1 { font-family: 'Inter', sans-serif; color: #1e293b; font-size: 28px; margin-bottom: 5px; }
+        h1 { font-family: 'Inter', sans-serif; color: #1e293b; font-size: 24px; margin-bottom: 5px; font-weight: 700;}
         p { color: #64748b; font-size: 14px; margin-bottom: 30px; }
         </style>
     """, unsafe_allow_html=True)
@@ -57,10 +56,11 @@ def login():
     c1, c2, c3 = st.columns([1, 2, 1])
     
     with c2:
+        # UPDATED LOGO AND NAME HERE
         st.markdown("""
             <div style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
-                <img src="https://cdn-icons-png.flaticon.com/512/900/900782.png" width="70">
-                <h1 style="margin-top: 15px;">OKEB NIGERIA</h1>
+                <img src="https://cdn-icons-png.flaticon.com/512/3199/3199863.png" width="80">
+                <h1 style="margin-top: 15px;">Okeb Nigeria Limited</h1>
                 <p>Enterprise Management Portal</p>
             </div>
         """, unsafe_allow_html=True)
@@ -82,15 +82,12 @@ def login():
                         st.success("Verifying credentials... Redirecting.")
                         st.rerun()
                     else:
-                        st.error("❌ Incorrect Password. Please try again.")
+                        st.error("❌ Incorrect Password.")
                 else:
-                    st.error("❌ Email not found in system.")
+                    st.error("❌ Email not found.")
 
-        # --- FORGOT PASSWORD SECTION ---
         with st.expander("Forgot Password?", expanded=False):
             st.info("🔐 **Recovery Instructions:**")
-            st.write("Since this is a secure internal system, please contact the **Manager** or **IT Administrator** to reset your password.")
-            st.caption("Support: admin@okeb.com")
+            st.write("Please contact the **Manager** or **IT Administrator** to reset your password.")
 
-    # Footer
     st.markdown("<div style='text-align: center; color: #94a3b8; font-size: 12px; margin-top: 50px;'>© 2026 Okeb Nigeria Limited | System v2.0</div>", unsafe_allow_html=True)
